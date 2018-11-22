@@ -48,6 +48,58 @@ popd  exec 1>&5
 3.    kubectl apply -f config_map_aws_auth.yaml
 4.    kubectl get svc
 5.    Create terraform kubernetes resource and init, apply or use the kubectl
+6.    Code
+```
+resource "null_resource" "local_install" {
+provisioner "local-exec" {
+command = "bash ${path.module}/install-all.sh"
+}
+
+triggers {
+timestamp = "${timestamp()}"
+}
+}
+
+provider "kubernetes" {}
+
+resource "kubernetes_replication_controller" "example" {
+
+depends_on = ["null_resource.local_install"]
+
+metadata {
+name = "terraform-example"
+
+labels {
+test = "MyExampleApp"
+}
+}
+
+spec {
+selector {
+test = "MyExampleApp"
+}
+
+template {
+container {
+image = "nginx:1.7.8"
+name  = "example"
+
+resources {
+limits {
+cpu  = "0.5"
+memory = "512Mi"
+}
+
+requests {
+cpu  = "250m"
+memory = "50Mi"
+}
+}
+}
+}
+}
+}
+```
 
 TO USE IN TFE:
 
@@ -123,5 +175,16 @@ AWS_ACCESS_KEY_ID=<id>
 AWS_SECRET_ACCESS_KEY=<secret>
 AWS_DEFAULT_REGION=<region>
 
+```
+
+For TFE you need additional piece of code in order to be able to destroy the resources later:
+
+```
+resource "null_resource" "local_install_on_destroy" {
+provisioner "local-exec" {
+command = "bash ${path.module}/install-all.sh"
+when  = "destroy"
+}
+}
 ```
 RUN
