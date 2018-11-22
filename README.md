@@ -112,7 +112,7 @@ resource "kubernetes_replication_controller" "example" {
 2. Connect VCS with TFE
 3. create variables
 ```
-KUBCONFIG=/terraform/config
+KUBECONFIG=/terraform/config
 AWS_ACCESS_KEY_ID=<id>
 AWS_SECRET_ACCESS_KEY=<secret>
 AWS_DEFAULT_REGION=<region>
