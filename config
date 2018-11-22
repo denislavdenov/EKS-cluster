@@ -24,4 +24,5 @@ users:
         - "token"
         - "-i"
         - "terraform-eks-demo"
+        - "arn:aws:iam::397899088771:role/terraform-eks-demo-cluster"
 
