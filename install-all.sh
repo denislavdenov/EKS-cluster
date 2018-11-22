@@ -23,3 +23,4 @@ popd
 
 exec 1>&5
 
+kubectl get svc
