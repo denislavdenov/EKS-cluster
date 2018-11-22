@@ -23,5 +23,3 @@ popd
 
 exec 1>&5
 
-kubectl apply -f config_map_aws_auth.yaml
-kubectl get svc
