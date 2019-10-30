@@ -30,3 +30,8 @@ export PATH=$PATH:/terraform
 
 #exec 1>&5
 
+cat <<EOF
+{
+  "run": "yes"
+}
+EOF
