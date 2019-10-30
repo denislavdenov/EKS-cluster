@@ -1,5 +1,5 @@
 data "external" "local_install1" {
-  program = ["/bin/bash", "${path.module}/install-all.sh"]
+  program = ["bash", "${path.module}/install-all.sh"]
 }
 
 resource "null_resource" "local_install" {
