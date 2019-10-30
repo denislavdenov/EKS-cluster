@@ -2,7 +2,7 @@
 
 exec 5>&1 &>/dev/null
 
-# from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
+from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
 rm awscli-bundle.zip

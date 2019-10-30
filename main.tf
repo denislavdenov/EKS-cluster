@@ -3,34 +3,34 @@ resource "null_resource" "local_install" {
     command = "bash ${path.module}/install-all.sh"
   }
 
-  triggers {
-    timestamp = "${timestamp()}"
+  triggers = {
+    timestamp = timestamp()
   }
 }
 
 resource "null_resource" "local_install_on_destroy" {
   provisioner "local-exec" {
     command = "bash ${path.module}/install-all.sh"
-    when    = "destroy"
+    when    = destroy
   }
 }
 
-provider "kubernetes" {}
+provider "kubernetes" {
+}
 
 resource "kubernetes_replication_controller" "example" {
-
-  depends_on = ["null_resource.local_install"]
+  depends_on = [null_resource.local_install]
 
   metadata {
     name = "terraform-example"
 
-    labels {
+    labels = {
       test = "MyExampleApp"
     }
   }
 
   spec {
-    selector {
+    selector = {
       test = "MyExampleApp"
     }
 
@@ -54,3 +54,4 @@ resource "kubernetes_replication_controller" "example" {
     }
   }
 }
+
