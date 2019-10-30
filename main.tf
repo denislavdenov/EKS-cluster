@@ -12,10 +12,7 @@ resource "null_resource" "local_install_on_destroy" {
   provisioner "local-exec" {
     command = "bash ${path.module}/install-all.sh"
     when    = destroy
-  }
-  triggers = {
-    timestamp = timestamp()
-  }
+    when    = plan
 }
 
 provider "kubernetes" {
