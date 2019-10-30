@@ -16,8 +16,8 @@ sudo curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-0
 sudo chmod +x kubectl
 
 # from https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html
-sudo curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
-sudo chmod +x aws-iam-authenticator
+sudo curl -o /usr/local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
+sudo chmod +x /usr/local/bin/aws-iam-authenticator
 
 popd
 
