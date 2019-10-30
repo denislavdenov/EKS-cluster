@@ -23,7 +23,7 @@ provider "kubernetes" {
 
 resource "kubernetes_replication_controller" "example" {
   
-  depends_on = [ null_resource.local_install ]
+  depends_on = [ null_resource.local_install, null_resource.local_install_on_destroy ]
   metadata {
     name = "terraform-example"
     labels = {
