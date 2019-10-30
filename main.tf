@@ -13,7 +13,7 @@ resource "null_resource" "local_install" {
 }
 
 resource "null_resource" "local_install_on_destroy" {
-  depends_on = ["data.external.local_install", "kubernetes_replication_controller.example"]
+  depends_on = ["data.external.local_install1", "kubernetes_replication_controller.example"]
   provisioner "local-exec" {
     command = "bash ${path.module}/install-all.sh"
     when    = destroy
