@@ -4,12 +4,12 @@ set -x
 
 #exec 5>&1 &>/dev/null
 
-from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-rm awscli-bundle.zip
-sudo /usr/bin/python2 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-rm -fr awscli-bundle
+# from https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html
+# curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+# unzip awscli-bundle.zip
+# rm awscli-bundle.zip
+# sudo /usr/bin/python2 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+# rm -fr awscli-bundle
 
 
 
